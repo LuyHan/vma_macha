@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import LoginPage from '../pages/LoginPage.vue';
 import AdminDashboard from '../pages/AdminDashboard.vue';
 import VehicleLogPage from '../pages/VehicleLogPage.vue';
@@ -13,6 +13,6 @@ const routes = [
 ];
 
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(), //history: createWebHistory(),
   routes,
 });
