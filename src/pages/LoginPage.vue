@@ -95,6 +95,9 @@ export default {
 .version {
   font-size: 12px;
   color: #aaa;
+  text-align: right;
+  position: relative;
+  top: -14px;
 }
 
 .form-box {
@@ -125,7 +128,7 @@ export default {
 }
 
 .options {
-  text-align: left;
+  text-align: right; 
   color: white;
   margin-bottom: 16px;
 }
