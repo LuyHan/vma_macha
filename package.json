@@ -10,7 +10,7 @@
     "deploy": "gh-pages -d dist",
     "build-deploy": "npm run build && npm run deploy",
     "auto-deploy": "node deploy.js",
-    "aws-deploy": "scp -i /Users/luy/Downloads/KEY/MyHomeDefaultKey.pem -r dist/* ubuntu@3.107.23.106:/var/www/aws-server/vt3-test/dist/",
+    "aws-deploy": "scp -i /Users/luy/Downloads/KEY/MyHomeDefaultKey.pem -r dist/* ubuntu@3.107.23.106:/var/www/aws-server/vt3-test/dist/ && ssh -i /Users/luy/Downloads/KEY/MyHomeDefaultKey.pem ubuntu@3.107.23.106 \"sudo systemctl reload nginx\"",
     "auto-aws-deploy": "npm run build && npm run aws-deploy"
   },
   "dependencies": {
