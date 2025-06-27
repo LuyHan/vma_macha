@@ -12,7 +12,7 @@
   
       <div class="grid">
         <div class="column">
-          <ActionButton text="배차 신청서 관리" @click="goToVehicleAccess" />
+          <ActionButton text="AWS 게시글 관리" @click="goToVehicleAccess" />
           <ActionButton text="차량일지 관리" @click="goToVehicleLogs" />
           <ActionButton text="차량일지 작성" />
           <ActionButton text="차량 정보 관리" />

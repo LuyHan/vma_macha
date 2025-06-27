@@ -6,7 +6,7 @@
         <span class="logo-icon">🔷</span>
         <span>스마트 <span class="highlight">차량관리 시스템</span> <strong class="matcha">마차</strong></span>
       </h1>
-      <p class="version">V5.1</p>
+      <!-- <p class="version">V5.1</p> -->
     </div>
 
     <div class="form-box">
