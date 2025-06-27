@@ -14,22 +14,22 @@ if git diff --cached --exit-code; then
   exit 0
 fi
 
-# --- 3. 커밋 메시지 입력 받기 (여러 줄 - 대체 방법) ---
+# --- 3. 커밋 메시지 입력 받기 (여러 줄 - Ctrl+D 종료 방식) ---
 echo "커밋 메시지 제목을 입력하세요 (예: feat: 새로운 기능 추가): "
-read -r commit_subject
+read -r commit_subject # 첫 번째 줄 (제목) 입력 받기
 
-echo "커밋 메시지 본문을 입력하세요 (입력 완료 후 'END' 입력 후 엔터):"
-commit_body=""
+echo "커밋 메시지 본문을 입력하세요 (입력 완료 후 Ctrl+D):"
+commit_body_lines=() # 본문 각 줄을 저장할 배열
+# Ctrl+D가 입력될 때까지 줄 단위로 읽기
 while IFS= read -r line; do
-  if [[ "$line" == "END" ]]; then
-    break
-  fi
-  # 입력된 줄에 줄바꿈 추가 (마지막 줄은 제외하기 위해 나중에 처리)
-  commit_body+="$line\n"
+  commit_body_lines+=("$line") # 각 줄을 배열에 추가
 done
 
-# 마지막에 추가된 불필요한 줄바꿈 제거
-commit_body=${commit_body%\\n}
+# 배열의 모든 줄을 줄바꿈으로 연결하여 하나의 문자열로 만듦
+commit_body=$(printf "%s\n" "${commit_body_lines[@]}")
+
+# 마지막에 불필요하게 추가될 수 있는 줄바꿈 제거 (선택 사항)
+# commit_body=${commit_body%\\n} # 필요시 주석 해제
 
 # 커밋 메시지 제목이 비어있는지 확인
 if [ -z "$commit_subject" ]; then
