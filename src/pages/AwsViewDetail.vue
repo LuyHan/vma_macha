@@ -2,7 +2,7 @@
     <div class="vehicle-log-container">
      <header class="top-bar">
        <h2>게시글 상세</h2>
-       <button class="back-btn" @click="$router.back()">뒤로가기</button>
+       <button class="back-btn" @click="$router.push('/vehicle-access')">뒤로가기</button>
      </header>
        <div v-if="loading">로딩 중...</div>
        <div v-else-if="error" class="error-message">{{ error }}</div>
@@ -13,8 +13,7 @@
         <p v-if="post.updatedAt && post.updatedAt !== post.createdAt">
           <strong>수정일:</strong> {{ post.updatedAt }}
         </p>
-        <hr>
-        <p>{{ post.content }}</p>
+        <p class="content-text">{{ post.content }}</p>
         <router-link :to="`/posts/${post.id}/edit`" >
           <button>수정</button>
         </router-link>
@@ -98,8 +97,13 @@ export default {
   font-weight: bold;
 }
 
-textarea {
-    width: 100%;
-    height: 150px;
+.content-text {
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  /* 줄바꿈 처리 */
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 </style>
