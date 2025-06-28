@@ -23,6 +23,7 @@
             <td>
               <router-link :to="`/posts/${post.id}`">
               {{ post.title }}
+              <span v-if="post.updatedAt && post.updatedAt !== post.createdAt" class="edited-tag"> (수정)</span>
               </router-link>
             </td>
             <td>{{ post.author }}</td>
@@ -246,6 +247,12 @@ export default {
   }
   .write-btn a:hover {
     color: black;
+  }
+
+  .edited-tag {
+    color: grey;
+    font-size: 0.8em;
+    margin-left:5px;
   }
   </style>
   
