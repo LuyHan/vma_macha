@@ -10,10 +10,14 @@
         <h2>{{ post.title }}</h2>
         <p><strong>작성자:</strong> {{ post.author }}</p>
         <p><strong>작성일:</strong> {{ post.createdAt }}</p>
+        <p v-if="post.updatedAt && post.updatedAt !== post.createdAt">
+          <strong>수정일:</strong> {{ post.updatedAt }}
+        </p>
         <hr>
-        <textarea>
-{{ post.content }}
-        </textarea>
+        <p>{{ post.content }}</p>
+        <router-link :to="`/posts/${post.id}/edit`" >
+          <button>수정</button>
+        </router-link>
        </div>
        <div v-else>
        게시글 정보를 불러올 수 없습니다.
