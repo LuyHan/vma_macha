@@ -86,12 +86,12 @@ export default {
         // this.post 객체에 id가 이미 포함되어 있으므로 URL에 id를 명시하고
         // 본문에는 post 객체 전체를 보냄 (백엔드에서 id와 createdAt/updatedAt은 무시하고 처리)
         const response = await axios.put(`${API_BASE_URL}/posts/${this.post.id}`, this.post);
-        console.log('게시글 수정 성공:', response.data);
+        //console.log('게시글 수정 성공:', response.data);
 
         // 수정 성공 후 게시글 상세 페이지로 이동
         // Vue 2: this.$router.push(`/posts/${this.post.id}`);
         // Vue 3: this.$router.push(`/posts/${this.post.id}`);
-        this.$router.push(`/posts/${this.post.id}`);
+        this.$router.push(`/boards/posts/${this.post.id}`);
 
       } catch (error) {
         console.error('게시글 수정 중 오류 발생:', error);

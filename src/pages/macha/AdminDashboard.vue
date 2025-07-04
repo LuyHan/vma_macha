@@ -25,7 +25,7 @@
   </template>
   
   <script>
-  import ActionButton from '../components/ActionButton.vue';
+  import ActionButton from '../../components/ActionButton.vue';
   import { useRouter } from 'vue-router';
   
   export default {
@@ -33,7 +33,7 @@
     data() {
         const router = useRouter();
         const goToVehicleLogs = () => router.push('/vehicle-logs');
-        const goToVehicleAccess = () => router.push('/vehicle-access');
+        const goToVehicleAccess = () => router.push('/board/posts');
         // return { goToVehicleLogs, goToVehicleAcess };
         return {
             goToVehicleLogs,

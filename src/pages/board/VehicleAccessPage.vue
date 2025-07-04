@@ -6,7 +6,7 @@
       </header>
       <hr>
       <div class="write-btn">
-        <router-link to="/posts/new">새 글 작성</router-link>
+        <router-link to="/board/posts/new">새 글 작성</router-link>
       </div>
       <table class="log-table">
         <thead>
@@ -21,7 +21,7 @@
             <td><input type="checkbox" /></td>
             
             <td>
-              <router-link :to="`/posts/${post.id}`">
+              <router-link :to="`/board/posts/${post.id}`">
               {{ post.title }}
               <span v-if="post.updatedAt && post.updatedAt !== post.createdAt" class="edited-tag"> (수정)</span>
               </router-link>

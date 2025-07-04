@@ -1,21 +1,22 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import LoginPage from '../pages/LoginPage.vue';
-import AdminDashboard from '../pages/AdminDashboard.vue';
-import VehicleLogPage from '../pages/VehicleLogPage.vue';
-import VehicleAccessPage from '../pages/VehicleAccessPage.vue';
-import AwsViewDetail from '../pages/AwsViewDetail.vue';
-import PostCreatePage from '../pages/PostCreatePage.vue';
-import PostEditPage from '../pages/PostEditPage.vue';
+import HomePage from '../pages/HomePage.vue';
+import LoginPage from '../pages/macha/LoginPage.vue';
+import AdminDashboard from '../pages/macha/AdminDashboard.vue';
+import VehicleLogPage from '../pages/macha/VehicleLogPage.vue';
+import VehicleAccessPage from '../pages/board/VehicleAccessPage.vue';
+import AwsViewDetail from '../pages/board/AwsViewDetail.vue';
+import PostCreatePage from '../pages/board/PostCreatePage.vue';
+import PostEditPage from '../pages/board/PostEditPage.vue';
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', component: HomePage },
   { path: '/login', component: LoginPage },
   { path: '/dashboard', component: AdminDashboard },
   { path: '/vehicle-logs', component: VehicleLogPage },
-  { path: '/vehicle-access', component: VehicleAccessPage },
-  { path: '/posts/:id', component: AwsViewDetail },
-  { path: '/posts/new', component: PostCreatePage },
-  { path: '/posts/:id/edit', component: PostEditPage },
+  { path: '/board/posts', component: VehicleAccessPage },
+  { path: '/board/posts/:id', component: AwsViewDetail },
+  { path: '/board/posts/new', component: PostCreatePage },
+  { path: '/board/posts/:id/edit', component: PostEditPage },
 ];
 
 export default createRouter({

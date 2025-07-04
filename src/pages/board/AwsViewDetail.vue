@@ -2,7 +2,7 @@
     <div class="vehicle-log-container">
      <header class="top-bar">
        <h2>게시글 상세</h2>
-       <button class="back-btn" @click="$router.push('/vehicle-access')">뒤로가기</button>
+       <button class="back-btn" @click="$router.push('/board/posts')">뒤로가기</button>
      </header>
        <div v-if="loading">로딩 중...</div>
        <div v-else-if="error" class="error-message">{{ error }}</div>
@@ -14,9 +14,10 @@
           <strong>수정일:</strong> {{ post.updatedAt }}
         </p>
         <p class="content-text">{{ post.content }}</p>
-        <router-link :to="`/posts/${post.id}/edit`" >
-          <button>수정</button>
+        <router-link :to="`/board/posts/${post.id}/edit`" >
+          <button class="edit-button">수정</button>
         </router-link>
+        <button @click="deletePost" class="delete-button">삭제</button>
        </div>
        <div v-else>
        게시글 정보를 불러올 수 없습니다.
@@ -67,6 +68,29 @@ export default {
       this.error = '게시글 ID가 제공되지 않았습니다.';
       this.loading = false;
     }
+  },
+  methods: {
+    async deletePost() { // <-- 삭제 메서드 추가
+      // 사용자에게 삭제 확인 메시지 띄우기
+      if (confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
+        try {
+          // 백엔드 API 호출 (DELETE 요청)
+          await axios.delete(`${API_BASE_URL}/posts/${this.post.id}`);
+          //console.log('게시글 삭제 성공');
+
+          // 삭제 성공 후 게시글 목록 페이지로 이동
+          this.$router.push('/board/posts');
+
+        } catch (error) {
+          console.error('게시글 삭제 중 오류 발생:', error);
+          if (error.response && error.response.status === 404) {
+            alert('삭제할 게시글을 찾을 수 없습니다.');
+          } else {
+            alert('게시글 삭제 중 오류가 발생했습니다.');
+          }
+        }
+      }
+    }
   }
 };
 </script>
@@ -105,5 +129,30 @@ export default {
   /* 줄바꿈 처리 */
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.edit-button {
+  padding: 10px 15px;
+  background-color: #28a745; /* 수정 버튼 색상 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px; /* 버튼 간 간격 */
+}
+.edit-button:hover {
+  background-color: #218838;
+}
+
+.delete-button { /* 삭제 버튼 스타일 추가 */
+  padding: 10px 15px;
+  background-color: #dc3545; /* 삭제 버튼 색상 (빨강) */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.delete-button:hover {
+  background-color: #c82333;
 }
 </style>

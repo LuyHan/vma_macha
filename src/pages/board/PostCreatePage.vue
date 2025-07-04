@@ -61,7 +61,7 @@ export default {
         // 작성 성공 후 게시글 목록 페이지로 이동
         // Vue 2: this.$router.push('/');
         // Vue 3: this.$router.push('/');
-        this.$router.push('/vehicle-access');
+        this.$router.push('/board/posts');
 
       } catch (error) {
         console.error('게시글 작성 중 오류 발생:', error);
