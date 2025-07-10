@@ -5,7 +5,7 @@
         <h1>안녕하세요, <span class="highlight">우한결의 포트폴리오</span>입니다.</h1>
         <p class="tagline">클라우드 기반의 풀스택 웹 서비스 개발에 열정을 가진 개발자 우한결입니다.</p>
         <div class="contact-info">
-          <a href="mailto:your.email@example.com" class="contact-button">이메일 문의</a>
+          <a href="mailto:whg0401@gmail.com" class="contact-button">이메일 문의</a>
           <a href="https://github.com/LuyHan" target="_blank" class="contact-button github-button">GitHub 프로필</a>
         </div>
       </header>
